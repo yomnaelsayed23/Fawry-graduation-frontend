@@ -105,23 +105,7 @@
                         </div>
                       </div>
                       <!-- phone number  -->
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-solid fa-phone fa-lg me-3 fa-fw mt-4"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <label class="form-label" for="phoneNumber">Phone number</label>
-                          <input
-                            type="tel"
-                            id="phoneNumber"
-                            name="phoneNumber"
-                            formControlName="phoneNumber"
-                            class="form-control"
-                          />
-                          <div *ngIf="registerform.get('phoneNumber')?.errors && registerform.get('phoneNumber')?.touched" class="alert text-danger m-0 p-0">
-                            <p *ngIf="registerform.get('phoneNumber')?.getError('required')">Phone number is required</p>
-                            <p *ngIf="registerform.get('phoneNumber')?.getError('pattern')">Invalid phone number</p>
-                          </div>
-                        </div>
-                      </div>
+                         
                         <!-- gender  -->
                         <div class="d-flex flex-row align-items-center mb-4 ">
                         <input type="radio" name="gender" id=""  formControlName="gender" class="mx-4 px-3" value="femail">Femail

@@ -5,6 +5,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from "./shared/components/footer/footer/footer.component";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    HttpClientModule
+    HttpClientModule,
+    FooterComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -2,28 +2,21 @@ import { Component } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { FooterComponent } from '../../shared/components/footer/footer/footer.component';
+import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [
-    HeaderComponent,FooterComponent,NavbarComponent,TopBarComponent,NgClass,RouterLink,
-  ],
+  imports: [FooterComponent,NavbarComponent,NgClass,RouterLink],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
 
-  constructor(public _themeService:ThemeService,private _showuser:ShowuserService){}
+  constructor(){}
 userInfo:any
 
-ngOnInit(): void {
- this._showuser.showuser(this.userInfo).subscribe({
-  next:(data)=>console.log(data.user),
 
-
- }
-  )
- }
 
 }
