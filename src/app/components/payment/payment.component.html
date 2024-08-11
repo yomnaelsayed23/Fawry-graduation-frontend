@@ -1,0 +1,143 @@
+<main class="mt-1 pt-4">
+  <div class="container">
+      <h2 class="my-5 text-center">Checkout form</h2>
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+              <div class="col-md-8 mb-4">
+                  <div class="card p-4">
+                      <div class="row mb-3">
+                          <div class="col-md-6 mb-2">
+                              <div class="form-outline">
+                                <label class="form-label">First name</label>
+                                  <input type="text" formControlName="firstName" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="col-md-6 mb-2">
+                              <div class="form-outline">
+                                <label class="form-label">Last name</label>
+                                  <input type="text" formControlName="lastName" class="form-control" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="input-group mb-4">
+                          <span class="input-group-text"></span>
+                          <input type="text" formControlName="username" class="form-control" placeholder="Username" />
+                      </div>
+                      <div class="form-outline mb-4">
+                          <input type="email" formControlName="email" class="form-control" placeholder="email@example.com" />
+                      </div>
+                      <div class="form-outline mb-4">
+                          <input type="text" formControlName="address" class="form-control" placeholder="1234 Main St" />
+                      </div>
+                      <div class="form-outline mb-4">
+                          <input type="text" formControlName="address2" class="form-control" placeholder="Apartment" />
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-4 col-md-12 mb-4">
+                              <div class="form-outline mb-4">
+                                  <input type="text" formControlName="country" class="form-control" placeholder="EGYPT" />
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-12 mb-4">
+                              <div class="form-outline mb-4">
+                                  <input type="text" formControlName="state" class="form-control" placeholder="Cairo" />
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-12 mb-4">
+                              <div class="form-outline">
+                                  <input type="text" formControlName="zip" class="form-control" placeholder="Zip" />
+                              </div>
+                          </div>
+                      </div>
+                      <hr />
+
+
+                      <div class="my-3">
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" formControlName="paymentMethod" value="credit" checked />
+                              <label class="form-check-label">Credit card</label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" formControlName="paymentMethod" value="debit" />
+                              <label class="form-check-label">Debit card</label>
+                          </div>
+
+                      </div>
+                      <div class="row mb-3">
+                          <div class="col-md-6 mb-3">
+                              <div class="form-outline">
+                                  <input type="text" formControlName="ccName" class="form-control" placeholder="Full name as displayed on card" />
+                              </div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <div class="form-outline">
+                                  <input type="text" formControlName="ccNumber" class="form-control" placeholder="Credit card number" />
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-3 mb-3">
+                              <div class="form-outline">
+                                  <input type="text" formControlName="ccExpiration" class="form-control" placeholder="Expiration" />
+                              </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                              <div class="form-outline">
+                                  <input type="text" formControlName="ccCvv" class="form-control" placeholder="CVV" />
+                              </div>
+                          </div>
+                      </div>
+                      <hr class="mb-4" />
+                      <button class="btn btn-primary" type="submit">Continue to checkout</button>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                      <span class="text-muted">Your cart</span>
+                      <span class="badge rounded-pill badge-primary">3</span>
+                  </h4>
+                  <ul class="list-group mb-3">
+                      <li class="list-group-item d-flex justify-content-between">
+                          <div>
+                              <h6 class="my-0">Product name</h6>
+                              <small class="text-muted"> description</small>
+                          </div>
+                          <span class="text-muted">777</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between">
+                          <div>
+                              <h6 class="my-0">Second product</h6>
+                              <small class="text-muted"> description</small>
+                          </div>
+                          <span class="text-muted">448</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between">
+                          <div>
+                              <h6 class="my-0">Third product</h6>
+                              <small class="text-muted"> description</small>
+                          </div>
+                          <span class="text-muted">775</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between bg-light">
+                          <div class="text-success">
+                              <h6 class="my-0">Promo code</h6>
+                              <small>EXAMPLECODE</small>
+                          </div>
+                          <span class="text-success">-5</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between">
+                          <span>Total (EG)</span>
+                          <strong>220</strong>
+                      </li>
+                  </ul>
+                  <form class="card p-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Promo code" />
+                          <button type="submit" class="btn btn-primary">Redeem</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </form>
+  </div>
+</main>

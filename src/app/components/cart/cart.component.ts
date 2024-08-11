@@ -5,6 +5,7 @@ import { CartService } from '../../services/cart.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 
@@ -29,7 +30,7 @@ export class CartComponent {
   cartProduct:any[] =[]
   total:number = 0
   success :boolean = false
-  constructor(private service:CartService){}
+  constructor(private service:CartService, private router: Router){}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -98,6 +99,7 @@ getCartProduct(){
     console.log(model)
     this.service.SendDataToBackend(model).subscribe((res:any) =>
       this.success = true)
+    this.router.navigate(['/payment'])
 
   }
   // to calculate Total products
@@ -107,5 +109,7 @@ getCartProduct(){
       this.total += this.cartProduct[x].item.price * this.cartProduct[x].quantity
     }
   }
+
+
 
 }
