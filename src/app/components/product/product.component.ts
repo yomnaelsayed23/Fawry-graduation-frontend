@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterLink } from '@angular/router';
 import { Product } from '../../product';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +12,7 @@ import { Product } from '../../product';
   imports: [
     NgIf,
     FormsModule,
-    
+
     RouterLink,
   ],
   templateUrl: './product.component.html',
@@ -20,10 +21,24 @@ import { Product } from '../../product';
 export class ProductComponent {
 @Input() data!:Product
 @Output() item = new EventEmitter
+// @Input() product: any;
 addButton:boolean =false
 amount:number = 0
 
-add(){
+// add(){
+// this.item.emit({item:this.data,quantity:this.amount})
+// }
+cartamount: number = 1;
+// addButton: boolean = false;
+
+constructor(private cartService: CartService) {}
+
+
+add() {
+ 
 this.item.emit({item:this.data,quantity:this.amount})
+
+
 }
+
 }

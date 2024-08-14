@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { FooterComponent } from "../../shared/components/footer/footer/footer.component";
 
 
 
@@ -18,10 +20,9 @@ import { Router } from '@angular/router';
     FormsModule,
     CommonModule,
     HttpClientModule,
-
-
-
-  ],
+    NavbarComponent,
+    FooterComponent
+],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

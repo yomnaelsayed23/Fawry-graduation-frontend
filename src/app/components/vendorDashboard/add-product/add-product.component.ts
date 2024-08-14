@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { TopBarComponent } from '../../top-bar/top-bar.component';
 import {
   FormControl,
   FormGroup,
@@ -10,12 +9,10 @@ import {
   ValidatorFn,
   AbstractControl,
 } from '@angular/forms';
-import { VendorDashboardService } from '../../services/vendor-dashboard.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { HeaderComponent } from '../../header/header.component';
-import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-add-product',
@@ -28,8 +25,7 @@ import { ThemeService } from '../../services/theme.service';
     FormsModule,
     CommonModule,
     HttpClientModule,
-    TopBarComponent,
-    NgClass
+    NgClass,
   ],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
@@ -37,9 +33,7 @@ import { ThemeService } from '../../services/theme.service';
 export class AddProductComponent {
   constructor(
     private router: Router,
-    private _vendorDashboardService: VendorDashboardService,
-    private _http: HttpClient
-    ,public _themeservice:ThemeService
+    private _http: HttpClient,
   ) {}
 
   error: string = '';
@@ -87,6 +81,7 @@ export class AddProductComponent {
 
   addProductVendor: FormGroup = new FormGroup({
     product_name: new FormControl(null, Validators.required),
+    descreption: new FormControl(null, Validators.required),
     category_id: new FormControl(null, Validators.required),
     price: new FormControl(null, Validators.required),
     stock: new FormControl(null, Validators.required),
@@ -102,6 +97,11 @@ export class AddProductComponent {
       'product_name',
       this.addProductVendor.get('product_name')?.value
     );
+    formdata.append(
+      'descreption',
+      this.addProductVendor.get('descreption')?.value
+    );
+
     formdata.append(
       'category_id',
       this.addProductVendor.get('category_id')?.value
@@ -120,21 +120,20 @@ export class AddProductComponent {
 
     const vendorToken = localStorage.getItem('vendorToken');
 
-    if (vendorToken) {
-      this._vendorDashboardService
-        .createProduct(formdata, vendorToken)
-        .subscribe({
-          next: (res: any) => {
-            console.log(res);
-            this.addProductVendor.reset();
-    this.router.navigate(['/vendor/dashboard/products']); // Redirect to desired route
-
-          },
-          error: (error) => {
-            console.log(error.error.errors, 'errors');
-          },
-        });
-    }
-
+    // if (vendorToken) {
+    //   this._vendorDashboardService
+    //     .createProduct(formdata, vendorToken)
+    //     .subscribe({
+    //       next: (res: any) => {
+    //         console.log(res);
+    //         this.addProductVendor.reset();
+    //         this.router.navigate(['/vendor/dashboard/products']); // Redirect to desired route
+    //       },
+    //       error: (error) => {
+    //         console.log(error.error, 'errors');
+    //         alert(error.error.errors);
+    //       },
+    //     });
+    // }
   }
 }

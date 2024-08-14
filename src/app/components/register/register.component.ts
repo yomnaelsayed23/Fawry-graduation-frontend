@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -12,24 +13,25 @@ import { CommonModule, NgClass } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { FooterComponent } from "../../shared/components/footer/footer/footer.component";
 
 
 @Component({
   selector: 'app-registr',
   standalone: true,
   imports: [
-
     FormsModule,
-
     CommonModule,
     RouterLink,
-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     NgClass,
-  ],
+    NavbarComponent,
+    FooterComponent
+],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -37,14 +39,14 @@ export class RegisterComponent {
   is_loading: boolean = false;
   date: Date | undefined;
   error: string = '';
-  constructor(private _Router: Router) {}
+  constructor(private _Router: Router, private authService: AuthService) {}
   registerform: FormGroup = new FormGroup({
-    first_name: new FormControl(null, [
+    firstName: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    last_name: new FormControl(null, [
+    lastName: new FormControl(null, [
       Validators.required,
       Validators.minLength(4),
       Validators.maxLength(15),
@@ -59,26 +61,26 @@ export class RegisterComponent {
       Validators.minLength(8),
     ]),
     termsCheckbox: new FormControl(Validators.requiredTrue),
-    phoneNumber: new FormControl(null, [
+    phone: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^(012|010|011|015)\d{8}$/),
-    ]), gender: new FormControl(null, [
-      Validators.required
-    ])
+    ]),
+    gender: new FormControl(null, [Validators.required]),
+    role: new FormControl("USER")
   });
 
   submitregistration(registerform: FormGroup) {
-    // this.is_loading = true;
-    // this.AuthService.signupUser(registerform.value).subscribe({
-    //   next: (response) => {
-    //     this.is_loading = false;
-    //     if (response.message === 'success') {
-    //       this._Router.navigate(['/login']);
-    //     } else {
-    //       this.error = response.message;
-    //     }
-    //   },
-    // });
+    this.is_loading = true;
+    this.authService.signup(registerform.value).subscribe({
+      next: (response) => {
+        this.is_loading = false;
+        if (response) {
+          this._Router.navigate(['/login']);
+        } else {
+          this.error = response.message;
+        }
+      },
+    });
     console.log(registerform.value);
   }
 }

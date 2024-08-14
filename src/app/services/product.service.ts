@@ -25,4 +25,8 @@ export class ProductsService {
   getDetailsProduct(id:number){
     return this._http.get(`https://fakestoreapi.com/products/${id}`)
   }
+
+  searchMovie(moviename: string): Observable<any>{
+    return this._http.get(`https://api.themoviedb.org/3/search/movie?api_key=6795618303e502bcf5f108ef8fb77131&query=${moviename}`)
+  }
 }

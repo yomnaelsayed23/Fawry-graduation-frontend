@@ -1,9 +1,8 @@
-<app-top-bar></app-top-bar>
-<app-header></app-header>
-<div [ngClass]="{'dark-mood': this._themeservice.isDarkMood}">
+
+<div >
 
 <main class="container-fluid " >
-  <div class="row flex-nowrap" [ngClass]="{'dark-mood': this._themeservice.isDarkMood}">
+  <div class="row flex-nowrap" >
     <div
       class="col-auto col-md-2 col-xl-1 px-sm-2 px-0 bg-dark d-flex justify-content-center pt-5"
     >
@@ -21,7 +20,7 @@
             <form
               class="mx-1 mx-md-4 flex-fill"
               enctype="multipart/form-data"
-              (ngSubmit)="onUpdateDetails()"
+
             >
               <!-- First name  -->
               <div class="d-flex flex-row align-items-center mb-4">
@@ -114,46 +113,16 @@
                   [(ngModel)]="vendor.plan_id"
                   [ngModelOptions]="{ standalone: true }"
                 />
-                <!--
-                      <select
-                        id="plan"
-                        class="form-control"
-                        formControlName="plan"
-                        name="plan"
-                      >
-                        <option disabled selected>Select a plan</option>
-                        <option value="1">Free</option>
-                        <option value="2">Silver</option>
-                        <option value="3">Gold</option>
-                        <option value="4">Platinum</option>
-                      </select> -->
+
               </div>
 
-              <!-- password and confirm password -->
-              <!-- <div class="d-flex flex-row align-items-center mb-4">
-                <i class="fas fa-lock fa-lg me-3 fa-fw mt-4"></i>
-                <div class="d-flex w-100 passwords flex-column">
-                  <label class="form-label" for="password">Password</label>
-                  <input
-                    type="password"
-                    class="form-control w-100"
-                    id="password"
-                    formControlName="password"
-                  />
-                </div>
-              </div> -->
+
 
               <!-- in those we will just display the image for front and back id  -->
               <div class="d-flex gap-2 id ms-4 mt-4">
                 <div class="mb-3 frontid w-50">
                   <p class="form-label">Front ID</p>
-                  <!-- <input
-                    type="file"
-                    id="front_id"
-                    class="form-control"
-                    formControlName="frontid"
-                    accept="image/*"
-                  /> -->
+
                   <img
                     [src]="vendor.id_photo_front"
                     alt=""

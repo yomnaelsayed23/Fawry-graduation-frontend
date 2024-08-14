@@ -6,13 +6,10 @@ import {
   Router,
   ActivatedRoute,
 } from '@angular/router';
-import { TopBarComponent } from '../../top-bar/top-bar.component';
 import { SideBarComponent } from '../side-bar/side-bar.component';
 
-import { ThemeService } from '../../services/theme.service';
 import { NgClass } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { VendorDashboardService } from '../../services/vendor-dashboard.service';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-edit-product',
@@ -21,7 +18,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterLink,
     NgClass,
-    TopBarComponent,
     SideBarComponent,
     HttpClientModule,
     RouterModule,
@@ -36,9 +32,7 @@ export class EditProductComponent implements OnInit {
   // updateProductForm: FormGroup;
 
   constructor(
-    private route: ActivatedRoute
-    ,public _themeservice:ThemeService,
-    private _vendorDashboardService: VendorDashboardService,
+    private route: ActivatedRoute,
     private _http: HttpClient,
     private _Router: Router
   ) {}
@@ -52,64 +46,64 @@ export class EditProductComponent implements OnInit {
     const vendorToken = localStorage.getItem('vendorToken');
     // console.log(vendorToken);
 
-    if (vendorToken) {
-      this._vendorDashboardService
-        .getSingleProduct(vendorToken, this.productId)
-        .subscribe(
-          (res) => {
-            this.product = res.product;
-            // console.log(res.product);
-          },
-          (error) => {
-            console.error('Error fetching product details:', error);
-          }
-        );
+    // if (vendorToken) {
+    //   this._vendorDashboardService
+    //     .getSingleProduct(vendorToken, this.productId)
+    //     .subscribe(
+    //       (res) => {
+    //         this.product = res.product;
+    //         // console.log(res.product);
+    //       },
+    //       (error) => {
+    //         console.error('Error fetching product details:', error);
+    //       }
+    //     );
       // }
     }
   }
 
-  onEditProduct() {
-    const vendorToken = localStorage.getItem('vendorToken');
-    if (vendorToken) {
-      const inputData = {
-        product_name: this.product.product_name,
-        price: this.product.price,
-        discount: this.product.discount,
-        stock: this.product.stock,
-        // description: this.product.description,
-        // to be added later with the onsale true or false
-      };
-      this._vendorDashboardService
-        .editProduct(this.product.id, inputData, vendorToken)
-        .subscribe(
-          (res) => {
-            this._Router.navigate(['/vendor/dashboard/products']);
-            console.log(vendorToken);
-            console.log(inputData);
-          },
-          (error) => {
-            console.error('Error fetching product details: ', error);
-          }
-        );
-    }
-  }
+  // onEditProduct() {
+    // const vendorToken = localStorage.getItem('vendorToken');
+    // if (vendorToken) {
+    //   const inputData = {
+    //     product_name: this.product.product_name,
+    //     price: this.product.price,
+    //     discount: this.product.discount,
+    //     stock: this.product.stock,
+    //     // description: this.product.description,
+    //     // to be added later with the onsale true or false
+    //   };
+    //   this._vendorDashboardService
+    //     .editProduct(this.product.id, inputData, vendorToken)
+    //     .subscribe(
+    //       (res) => {
+    //         this._Router.navigate(['/vendor/dashboard/products']);
+    //         console.log(vendorToken);
+    //         console.log(inputData);
+    //       },
+    //       (error) => {
+    //         console.error('Error fetching product details: ', error);
+    //       }
+    //     );
+    // }
+  // }
 
-  onDelete() {
-    this.productId = this.route.snapshot.paramMap.get('id');
-    const vendorToken = localStorage.getItem('vendorToken');
-    if (vendorToken) {
-      this._vendorDashboardService
-        .deleteProduct(vendorToken, this.productId)
-        .subscribe(
-          (response) => {
-            this._Router.navigate(['/vendor/dashboard/products']);
-          },
-          (error) => {
-            console.error('Error fetching products:', error);
-          }
-        );
-    } else {
-      console.error('Vendor token not found.');
-    }
-  }
-}
+  // onDelete() {
+  //   this.productId = this.route.snapshot.paramMap.get('id');
+  //   const vendorToken = localStorage.getItem('vendorToken');
+  //   if (vendorToken) {
+  //     this._vendorDashboardService
+  //       .deleteProduct(vendorToken, this.productId)
+  //       .subscribe(
+  //         (response) => {
+  //           this._Router.navigate(['/vendor/dashboard/products']);
+  //         },
+  //         (error) => {
+  //           console.error('Error fetching products:', error);
+  //         }
+  //       );
+  //   } else {
+  //     console.error('Vendor token not found.');
+  //   }
+  // }
+// }

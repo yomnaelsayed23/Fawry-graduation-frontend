@@ -4,6 +4,8 @@ import { ProductsService } from '../../services/product.service';
 import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
 import { NgIf } from '@angular/common';
 import { error } from 'console';
+import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { FooterComponent } from "../../shared/components/footer/footer/footer.component";
 
 @Component({
   selector: 'app-products-details',
@@ -11,7 +13,9 @@ import { error } from 'console';
   imports: [
     SpinnerComponent,
     NgIf,
-  ],
+    NavbarComponent,
+    FooterComponent
+],
   templateUrl: './products-details.component.html',
   styleUrl: './products-details.component.scss'
 })
