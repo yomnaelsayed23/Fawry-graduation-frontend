@@ -9,12 +9,11 @@ import {
 } from '@angular/forms';
 import { CommonModule, NgClass } from '@angular/common';
 
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-
-import { AuthService } from './../../services/auth.service';
-import { FooterComponent } from "../../shared/components/footer/footer/footer.component";
 import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { FooterComponent } from "../../shared/components/footer/footer/footer.component";
+
 
 @Component({
   selector: 'app-login',
@@ -26,13 +25,13 @@ import { NavbarComponent } from "../../shared/components/navbar/navbar.component
     RouterLink,
     HttpClientModule,
     NgClass,
-    FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent  {
   // backerror: string = '';
   error: string = '';
   isuserLogin: boolean = false;
@@ -40,8 +39,9 @@ export class LoginComponent {
   constructor(
     private _Router: Router,
     private http: HttpClient,
-    private authService: AuthService
+
   ) {}
+
 
   loginform: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -51,22 +51,14 @@ export class LoginComponent {
     ]),
   });
 
-  submitlogin(loginform: FormGroup){
-    this.authService.login(this.loginform.value).subscribe({
-      next: (response) => {
-         if (response) {
-          const token = response.token;
-          this.authService.saveToken(token)
-           this._Router.navigate(['/home']);
-         } else {
-           this.error = response.message;
-         }
-      }
-    });
-    // const formdata = new FormData();
 
-    // formdata.append('email', this.loginform.get('email')?.value);
-    // formdata.append('password', this.loginform.get('password')?.value);
+  submitlogin() {
+    const formdata = new FormData();
+
+    formdata.append('email', this.loginform.get('email')?.value);
+    formdata.append('password', this.loginform.get('password')?.value);
+
+
   }
 }
 

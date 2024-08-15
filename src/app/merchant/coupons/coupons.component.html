@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-3">
+
+    <app-merchant-sidebar></app-merchant-sidebar>
+  </div>
+  <div class="col-md-9 ">
+
+  <h2 class="text-center m-3" > Your Coupons</h2>
+  <button class="btn btn-primary py-3 px-4  rounded-3" (click)="createNewCoupon()">Create New Coupon </button>
+
+<!-- <app-create-coupon-model></app-create-coupon-model> -->
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Code</th>
+        <th>Usage Count</th>
+        <th>Expire Date</th>
+        <th>Fxid Value</th>
+        <th> Percentage Value</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coupon of coupons">
+        <td>{{ coupon.code }}</td>
+        <td>{{ coupon.usageCount }}</td>
+        <td>{{ coupon.expireDate }}</td>
+        <td>{{ coupon.fxidValue }}</td>
+        <td>{{ coupon.percentageValue }}</td>
+        <td>
+          <button class="btn btn-danger me-2">Delete</button>
+          <button class="btn btn-primary me-2">Edit</button>
+
+
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+</div>
+
+</div>
+  <!-- </div> -->
+
+

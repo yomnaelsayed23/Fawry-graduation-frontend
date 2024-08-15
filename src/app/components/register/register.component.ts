@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth.service';
 import { Component, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -39,14 +38,14 @@ export class RegisterComponent {
   is_loading: boolean = false;
   date: Date | undefined;
   error: string = '';
-  constructor(private _Router: Router, private authService: AuthService) {}
+  constructor(private _Router: Router) {}
   registerform: FormGroup = new FormGroup({
-    firstName: new FormControl(null, [
+    first_name: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    lastName: new FormControl(null, [
+    last_name: new FormControl(null, [
       Validators.required,
       Validators.minLength(4),
       Validators.maxLength(15),
@@ -61,26 +60,26 @@ export class RegisterComponent {
       Validators.minLength(8),
     ]),
     termsCheckbox: new FormControl(Validators.requiredTrue),
-    phone: new FormControl(null, [
+    phoneNumber: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^(012|010|011|015)\d{8}$/),
-    ]),
-    gender: new FormControl(null, [Validators.required]),
-    role: new FormControl("USER")
+    ]), gender: new FormControl(null, [
+      Validators.required
+    ])
   });
 
   submitregistration(registerform: FormGroup) {
-    this.is_loading = true;
-    this.authService.signup(registerform.value).subscribe({
-      next: (response) => {
-        this.is_loading = false;
-        if (response) {
-          this._Router.navigate(['/login']);
-        } else {
-          this.error = response.message;
-        }
-      },
-    });
+    // this.is_loading = true;
+    // this.AuthService.signupUser(registerform.value).subscribe({
+    //   next: (response) => {
+    //     this.is_loading = false;
+    //     if (response.message === 'success') {
+    //       this._Router.navigate(['/login']);
+    //     } else {
+    //       this.error = response.message;
+    //     }
+    //   },
+    // });
     console.log(registerform.value);
   }
 }

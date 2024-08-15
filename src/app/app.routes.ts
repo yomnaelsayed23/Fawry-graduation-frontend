@@ -15,6 +15,12 @@ import { MerchantsComponent } from './admin/merchants/merchants.component';
 import { ShowAllUsersComponent } from './admin/show-all-users/show-all-users.component';
 import { ShowAdminsComponent } from './admin/show-admins/show-admins.component';
 import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
+import { MerchantDashboardComponent } from './merchant/merchant-dashboard/merchant-dashboard.component';
+import { CouponsComponent } from './merchant/coupons/coupons.component';
+import { MerchantSidebarComponent } from './merchant/merchant-sidebar/merchant-sidebar.component';
+import { MerchantProductsComponent } from './merchant/merchant-products/merchant-products.component';
+import { CreateCouponModelComponent } from './merchant/create-coupon-model/create-coupon-model.component';
+import { CreateProductComponent } from './merchant/create-product/create-product.component';
 // import { AdminDashboardComponent } from './components/admin/AdminDashboardComponent';
 // import { CategoriesComponent } from './components/admin/categories/categories.component';
 // import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
@@ -47,24 +53,16 @@ export const routes: Routes = [
   {path:"create-admins", component:CreateAdminComponent},
   {path:"showallusers", component:ShowAllUsersComponent},
   {path:"merchents", component:AdmindashboardComponent},
-  // {path:"admin/dasboard/merchants", component:AdmindashboardComponent},
-  // {path:"admin/categories", component:CategoriesComponent},
-  // // {path:"admin/categories", component:CategoriesComponent},e:\revision angular projects\2p\dashboard\src\app\auth\components\register
-  // {path:"login-admin", component:LoginAdminComponent},
-  // {path:"admin/payment-methods", component:PaymentMethodsComponent},
-  // {path:"admin/promo-codes", component:PromoCodesComponent},
-  // {path:"admin/vendors", component:VendorsComponent},
 
 
-  // {path:"vendor/dashboard", component:VendorDashboardComponent},
-  // {path:"vendor/dashboard/account-setting", component:AccountSettingsComponent},
-  // {path:"vendor/dashboard/add-product", component:AddProductComponent},
-  // {path:"vendor/dashboard/edit-product", component:EditProductComponent},
-  // {path:"vendor/dashboard/promocodes", component:PromocodesComponent},
-  // {path:"vendor/dashboard/ratings", component:RatingsComponent},
-  // {path:"vendor/dashboard/side-bar", component:SideBarComponent},
-  // {path:"vendor/dashboard/orders", component:VendorOrdersComponent},
-  // {path:"vendor/dashboard/products", component:VendorProductsComponent},
+
+  {path:"merchent-dashboard", component:MerchantDashboardComponent},
+  {path:"merchent-products", component:MerchantProductsComponent},
+  {path:"merchent-sidebar", component:MerchantSidebarComponent},
+  {path:"coupons", component:CouponsComponent},
+  {path:"create-coupon", component:CreateCouponModelComponent},
+  {path:"create-product", component:CreateProductComponent},
+
 
 
     {path:"**",redirectTo:"home",pathMatch:"full"},
