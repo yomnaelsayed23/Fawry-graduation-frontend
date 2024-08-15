@@ -3,18 +3,24 @@ import { MerchantSidebarComponent } from "../merchant-sidebar/merchant-sidebar.c
 import { NgFor } from '@angular/common';
 import { CreateCouponModelComponent } from "../create-coupon-model/create-coupon-model.component";
 import { Router } from '@angular/router';
+import { CouponService } from '../services/coupon.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-coupons',
   standalone: true,
   imports: [MerchantSidebarComponent,
-    NgFor, CreateCouponModelComponent],
+    NgFor, CreateCouponModelComponent,
+    FormsModule
+  ],
   templateUrl: './coupons.component.html',
   styleUrl: './coupons.component.css'
 })
 export class CouponsComponent {
 
-  constructor(private router:Router) {
+
+
+  constructor(private router:Router,private couponService:CouponService) {
 
 
   }
@@ -28,5 +34,21 @@ coupons = [
 
 createNewCoupon() {
   this.router.navigate(['/create-coupon'])
+  }
+  selectedCoupon = { id:0 ,code: '', usageCount: 0, expireDate: '', fxidValue: 0,percentageValue:0 };
+
+
+  onSubmit() {
+    this.couponService.updateCoupon(this.selectedCoupon.id, this.selectedCoupon).subscribe(
+      (response:any) => {
+        console.log('Coupon updated:', response);
+        // this.loadProducts();
+        // Reload products after update
+
+      },
+      (error:any) => {
+        console.error('Error updating Coupon:', error);
+      }
+    );
   }
 }

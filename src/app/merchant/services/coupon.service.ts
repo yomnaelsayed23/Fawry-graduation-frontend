@@ -18,4 +18,11 @@ export class CouponService {
   getCoupons(): Observable<Coupon[]> {
     return this.http.get<Coupon[]>(this.apiUrl);
   }
+
+
+
+
+  updateCoupon(id: number, coupon: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, coupon);
+  }
 }

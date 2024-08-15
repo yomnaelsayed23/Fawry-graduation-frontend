@@ -1,62 +1,16 @@
 
-<div class="row">
-  <div class="col-md-3">
+<!-- Edit Product Modal -->
 
-    <app-merchant-sidebar></app-merchant-sidebar>
-  </div>
-
-<div class="  col-md-9 py-3">
-
-  <h2 class="text-center m-3">Your Products</h2>
-  <button class="btn btn-primary py-3 px-4  rounded-3" (click)="createNewProduct()">Create New Product </button>
-
-  <table class="table table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Discription</th>
-        <th> Stock Quantity</th>
-        <th>Action</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.image }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.stockQuantity }}</td>
-        <td>
-          <button class="btn btn-danger me-2">Delete</button>
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCardModal">
-          Edit
-
-          </button>
-
-
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-
-
-<!-- The Modal -->
-<div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="addCardModalLabel" aria-hidden="true">
+<!--
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title" id="addCardModalLabel">        Edit Product</h5>
-
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <!-- Modal Body -->
       <div class="modal-body">
+        Product Edit Form
         <form (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="productName" class="form-label">Product Name</label>
@@ -79,7 +33,4 @@
       </div>
     </div>
   </div>
-</div>
-</div>
-
-</div>
+</div> -->
