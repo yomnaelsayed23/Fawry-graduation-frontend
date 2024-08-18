@@ -30,16 +30,17 @@ console.log(this.id);}
 ngOnInit(): void {
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
-  this.getDetailsProduct(this.id)
+  // this.getDetailsProduct(this.id)
 }
 
-getDetailsProduct(id:any){
-this.loading = true
-  this._productService.getDetailsProduct(this.id).subscribe((res:any)=>{
-  this.loading = false
-    this.productData=res
-  },error => {this.loading = true
-  alert(error)
-  }
-)}}
+// getDetailsProduct(id:any){
+// this.loading = true
+//   this._productService.getDetailsProduct(this.id).subscribe((res:any)=>{
+//   this.loading = false
+//     this.productData=res
+//   },error => {this.loading = true
+//   alert(error)
+//   }
+// )}}
 
+}

@@ -34,8 +34,7 @@ export class CartComponent {
   constructor(private service:CartService, private router: Router){}
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+   
     this.getCartProduct()
   }
   // get data from localstorage
@@ -98,9 +97,9 @@ getCartProduct(){
       date: new Date,
       products:products
     }
-    console.log(model)
-    this.service.SendDataToBackend(model).subscribe((res:any) =>
-      this.success = true)
+    // console.log(model)
+    // this.service.SendDataToBackend(model).subscribe((res:any) =>
+    //   this.success = true)
     this.router.navigate(['/payment'])
 
   }

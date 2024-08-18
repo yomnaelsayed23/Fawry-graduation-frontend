@@ -22,18 +22,18 @@ export class SearchListComponentComponent implements OnInit {
     // Initial setup based on the current route params
     this.activatedRoute.params.subscribe(params => {
       this.searchValue = params['searchValue'];
-      this.fetchMovies();
+      this. fetchproducts();
     });
 
     // Listen for changes in route params
     this.activatedRoute.params.subscribe(params => {
       this.searchValue = params['searchValue'];
-      this.fetchMovies();
+      this.fetchproducts();
     });
   }
 
-  fetchMovies() {
-    this.getapilistservice.searchMovie(this.searchValue).subscribe((response: any) => {
+  fetchproducts() {
+    this.getapilistservice.searchItem(this.searchValue).subscribe((response: any) => {
       this.products = response.results;
     });
   }
