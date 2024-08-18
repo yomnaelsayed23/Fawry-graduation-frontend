@@ -53,6 +53,7 @@ getCartProduct(){
     this.cartProduct[index].quantity++
     this.getTotalProducts()
     localStorage.setItem('cart', JSON.stringify(this.cartProduct))
+    
   }
 
 

@@ -18,11 +18,16 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent  {
+export class NavbarComponent   implements OnInit {
   cartCount: number = 0;
 
   constructor(private cartService: CartService) {}
 
-
+    ngOnInit() {
+      // Subscribe to cart count changes
+      this.cartService.cartCount$.subscribe(count => {
+        this.cartCount = count;
+      });
+    }
 
 }

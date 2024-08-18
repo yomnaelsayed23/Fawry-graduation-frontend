@@ -6,7 +6,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from "./shared/components/footer/footer/footer.component";
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from '../app/components/register/register.component';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +15,11 @@ import { RegisterComponent } from './components/register/register.component';
     RouterOutlet,
     NavbarComponent,
     HomeComponent,
-    RegisterComponent,
-    LoginComponent,
     HttpClientModule,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent
+    // RegisterComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -32,13 +32,24 @@ cartamount: number = 1;
 // addButton: boolean = false;
 
 constructor(private cartService: CartService) {}
-
+updatedCount!:number
 
 add() {
- 
+
 this.item.emit({item:this.data,quantity:this.amount})
+}
+
+  // Method to handle the "Add to Cart" button click
+  // onAddToCart() {
+  //   this.cartService.addToCart();
+  //   this.updatedCount = this.cartamount.value + 1;
+  //   if (!isNaN(this.updatedCount)) {
+  //     this.cartCountSubject.next(updatedCount);
+  //     localStorage.setItem('cartCount', updatedCount.toString());
+  //   }
+  // }
 
 
 }
 
-}
+

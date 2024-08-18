@@ -31,6 +31,7 @@ export class CreateProductComponent {
   }
 
   addProduct(): void {
+    console.log("addproduct method product added")
     if (this.productForm.valid) {
       const newProduct = this.productForm.value;
       console.log('Product Added:', newProduct);
