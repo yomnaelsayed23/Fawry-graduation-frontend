@@ -51,7 +51,7 @@ export class MerchantProductsComponent {
 
 
   createNewProduct() {
-    this.router.navigate(['/create-product'])
+    this.router.navigate(['/merchent-dashboard'])
     }
     selectedProduct = { id:0 ,name: '', price: 0, description: '', stockQuantity: 0 };
 

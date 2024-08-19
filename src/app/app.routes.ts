@@ -21,6 +21,7 @@ import { MerchantSidebarComponent } from './merchant/merchant-sidebar/merchant-s
 import { MerchantProductsComponent } from './merchant/merchant-products/merchant-products.component';
 import { CreateCouponModelComponent } from './merchant/create-coupon-model/create-coupon-model.component';
 import { CreateProductComponent } from './merchant/create-product/create-product.component';
+import { SearchCouponComponent } from './merchant/search-coupon/search-coupon.component';
 // import { AdminDashboardComponent } from './components/admin/AdminDashboardComponent';
 // import { CategoriesComponent } from './components/admin/categories/categories.component';
 // import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
@@ -59,7 +60,7 @@ export const routes: Routes = [
   {path:"merchent-dashboard", component:MerchantDashboardComponent},
   {path:"merchent-products", component:MerchantProductsComponent},
   {path:"merchent-sidebar", component:MerchantSidebarComponent},
-  {path:"coupons", component:CouponsComponent},
+  {path:"search-coupones", component:SearchCouponComponent},
   {path:"create-coupon", component:CreateCouponModelComponent},
   {path:"create-product", component:CreateProductComponent},
 

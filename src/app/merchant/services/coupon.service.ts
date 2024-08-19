@@ -19,7 +19,15 @@ export class CouponService {
     return this.http.get<Coupon[]>(this.apiUrl);
   }
 
+  // Get coupon by ID
+  getCouponById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 
+  // Delete coupon by ID
+  deleteCoupon(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 
 
   updateCoupon(id: number, coupon: any): Observable<any> {
