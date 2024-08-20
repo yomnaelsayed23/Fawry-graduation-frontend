@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8086/auth';
+  private apiUrl = 'http://localhost:8090/api/v1/auth';
   private tokenKey = 'auth-token';
+  userId!:string;
+  role!:string;
+  user: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -29,9 +33,10 @@ export class AuthService {
       .pipe(
         map((response) => {
           const token = response.headers.get('Authorization');
-          if (token) {
-            this.saveToken(token);
-          }
+          console.log('from login in service', response);
+          // if (token) {
+          //   this.saveToken(token);
+          // }
           return response.body;
         })
       );
@@ -40,12 +45,18 @@ export class AuthService {
   // Save token to localStorage
   saveToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
+
+
   }
 
   // Get token from localStorage
   getToken(): string | null {
+
+      if (typeof window !== 'undefined') {
     return localStorage.getItem(this.tokenKey);
   }
+  return null
+}
 
   // Check if user is logged in
   isLoggedIn(): boolean {

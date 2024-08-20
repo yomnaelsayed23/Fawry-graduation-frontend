@@ -64,7 +64,7 @@ export class RegisterComponent {
       Validators.pattern(/^(012|010|011|015)\d{8}$/),
     ]),
     gender: new FormControl(null, [Validators.required]),
-    role: new FormControl("USER")
+    role: new FormControl(null, [Validators.required])
   });
 
   submitregistration(registerform: FormGroup) {

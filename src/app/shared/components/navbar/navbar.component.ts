@@ -4,6 +4,8 @@ import { RegisterComponent } from '../../../components/register/register.compone
 import { CartComponent } from '../../../components/cart/cart.component';
 import { SearchComponent } from '../../../components/search/search.component';
 import { CartService } from '../../../services/cart.service';
+import { AuthService } from '../../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +15,7 @@ import { CartService } from '../../../services/cart.service';
     RegisterComponent,
     CartComponent,
     SearchComponent,
+    NgIf
 
   ],
   templateUrl: './navbar.component.html',
@@ -20,14 +23,27 @@ import { CartService } from '../../../services/cart.service';
 })
 export class NavbarComponent   implements OnInit {
   cartCount: number = 0;
-
-  constructor(private cartService: CartService) {}
+  isAuthenticated:boolean = false
+  constructor(private cartService: CartService,private authService:AuthService) {}
 
     ngOnInit() {
-      // Subscribe to cart count changes
-      // this.cartService.cartCount$.subscribe(count => {
-      //   this.cartCount = count;
-      // });
+      this.authService.user.subscribe({
+        next:() =>{
+        
+          if( this.authService.getToken() != null){
+            this.isAuthenticated=true;
+          }else{
+            this.isAuthenticated=false;
+          }
+        }
+      })
     }
 
+
+    logout(){
+      this.authService.logout()
+    localStorage.removeItem("role");
+    localStorage.removeItem("userId");
+    this.isAuthenticated = false;
+    }
 }

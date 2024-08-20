@@ -55,13 +55,41 @@ export class LoginComponent {
          if (response) {
           console.log(response)
           const token = response.token;
+          const userId = response.user.userId
+          const role = response.user.role
+          console.log(userId)
+          console.log(role)
+          localStorage.setItem("userId", userId);
+          localStorage.setItem("role", role);
           this.authService.saveToken(token)
 
-           this._Router.navigate(['/home']);
-         } else {
-           this.error = response.message;
-         }
-      }
+          switch (role) {
+            case 'ADMIN':
+              this._Router.navigate(['/admin-dashboard']);
+              break;
+            case 'USER':
+              this._Router.navigate(['/home']);
+              break;
+            case 'MERCHANT':
+              this._Router.navigate(['/merchent-dashboard']);
+              break;
+            default:
+              // Handle unknown role or show an error
+              this.error = 'Unknown role';
+              break;
+          }
+        } else {
+          this.error = response.message;
+        }
+
+          //  this._Router.navigate(['/home']);
+          },
+          error: (err) => {
+            console.error(err);
+            this.error = 'Login failed. Please try again.';
+          }
+
+
     });
     // const formdata = new FormData();
 

@@ -22,6 +22,7 @@ import { MerchantProductsComponent } from './merchant/merchant-products/merchant
 import { CreateCouponModelComponent } from './merchant/create-coupon-model/create-coupon-model.component';
 import { CreateProductComponent } from './merchant/create-product/create-product.component';
 import { SearchCouponComponent } from './merchant/search-coupon/search-coupon.component';
+import { authGuard } from './guard/auth.guard';
 // import { AdminDashboardComponent } from './components/admin/AdminDashboardComponent';
 // import { CategoriesComponent } from './components/admin/categories/categories.component';
 // import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
@@ -38,7 +39,7 @@ import { SearchCouponComponent } from './merchant/search-coupon/search-coupon.co
 // import { VendorProductsComponent } from './components/vendorDashboard/vendor-products/vendor-products.component';
 
 export const routes: Routes = [
-  {path:"home", component:HomeComponent},
+  {path:"home", component:HomeComponent , canActivate: [authGuard] },
   {path:"details/:id", component:ProductsDetailsComponent},
   {path:"profile", component:UserProfileComponent},
   {path:"register",component:RegisterComponent},
@@ -49,7 +50,7 @@ export const routes: Routes = [
 
 
   // {path:"admin", component:AdminDashboardComponent},
-  {path:"admin/dashboard", component:AdmindashboardComponent},
+  {path:"admin/dashboard", component:AdmindashboardComponent , canActivate: [authGuard]},
   {path:"show-admins", component:ShowAdminsComponent},
   {path:"create-admins", component:CreateAdminComponent},
   {path:"showallusers", component:ShowAllUsersComponent},
@@ -57,7 +58,7 @@ export const routes: Routes = [
 
 
 
-  {path:"merchent-dashboard", component:MerchantDashboardComponent},
+  {path:"merchent-dashboard", component:MerchantDashboardComponent , canActivate: [authGuard]},
   {path:"merchent-products", component:MerchantProductsComponent},
   {path:"merchent-sidebar", component:MerchantSidebarComponent},
   {path:"search-coupones", component:SearchCouponComponent},
