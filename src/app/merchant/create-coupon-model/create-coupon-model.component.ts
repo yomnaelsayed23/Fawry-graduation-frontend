@@ -43,8 +43,8 @@ throw new Error('Method not implemented.');
       code: ['', Validators.required],
       usageCount: [0, [Validators.required, Validators.min(1)]],
       expireDate: [null, Validators.required],
-      fxidValue: [0, Validators.required],
-      // percentageValue: [0, Validators.required]
+     
+      percentageValue: [0, Validators.required],
       percentageType: ['', Validators.required]
     });
   }
