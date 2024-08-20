@@ -16,7 +16,7 @@ import { ShowAllUsersComponent } from './admin/show-all-users/show-all-users.com
 import { ShowAdminsComponent } from './admin/show-admins/show-admins.component';
 import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
 import { MerchantDashboardComponent } from './merchant/merchant-dashboard/merchant-dashboard.component';
-import { CouponsComponent } from './merchant/coupons/coupons.component';
+// import { CouponsComponent } from './merchant/coupons/coupons.component';
 import { MerchantSidebarComponent } from './merchant/merchant-sidebar/merchant-sidebar.component';
 import { MerchantProductsComponent } from './merchant/merchant-products/merchant-products.component';
 import { CreateCouponModelComponent } from './merchant/create-coupon-model/create-coupon-model.component';

@@ -42,9 +42,10 @@ throw new Error('Method not implemented.');
     this.couponForm = this.fb.group({
       code: ['', Validators.required],
       usageCount: [0, [Validators.required, Validators.min(1)]],
-      expireDate: ['', Validators.required],
+      expireDate: [null, Validators.required],
       fxidValue: [0, Validators.required],
-      percentageValue: [0, Validators.required]
+      // percentageValue: [0, Validators.required]
+      percentageType: ['', Validators.required]
     });
   }
 }

@@ -25,25 +25,31 @@
           </div>
           <div class="mb-3">
             <label for="expireDate" class="form-label">Expiration Date</label>
-            <input type="date" class="form-control" id="expireDate" formControlName="expireDate">
+            <input type="datetime-local" class="form-control" id="expireDate" formControlName="expireDate">
             <div *ngIf="couponForm.get('expireDate')?.invalid && couponForm.get('expireDate')?.touched" class="text-danger">
-              Expiration Date is required.
+                Expiration Date is required.
             </div>
-          </div>
+        </div>
+
           <div class="mb-3">
-            <label for="fxidValue" class="form-label">FXID Value</label>
+            <label for="fxidValue" class="form-label">Value</label>
             <input type="number" class="form-control" id="fxidValue" formControlName="fxidValue">
             <div *ngIf="couponForm.get('fxidValue')?.invalid && couponForm.get('fxidValue')?.touched" class="text-danger">
-              FXID Value is required.
+               Value is required.
             </div>
           </div>
           <div class="mb-3">
-            <label for="percentageValue" class="form-label">Percentage Value</label>
-            <input type="number" class="form-control" id="percentageValue" formControlName="percentageValue">
-            <div *ngIf="couponForm.get('percentageValue')?.invalid && couponForm.get('percentageValue')?.touched" class="text-danger">
-              Percentage Value is required.
+            <label for="percentageType" class="form-label">Select Type</label>
+            <select class="form-control" id="percentageType" formControlName="percentageType">
+                <option value="">Select Type</option>
+                <option value="percentage">Percentage</option>
+                <option value="value">Value</option>
+            </select>
+            <div *ngIf="couponForm.get('percentageType')?.invalid && couponForm.get('percentageType')?.touched" class="text-danger">
+                Selection is required.
             </div>
-          </div>
+        </div>
+
           <button type="submit" class="btn btn-primary" [disabled]="couponForm.invalid">Add Coupon</button>
         </form>
 

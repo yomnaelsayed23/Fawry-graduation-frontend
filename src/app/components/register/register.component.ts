@@ -13,6 +13,7 @@ import { CommonModule, NgClass } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 
 
 @Component({
@@ -20,16 +21,15 @@ import { RouterModule, Routes } from '@angular/router';
   standalone: true,
   imports: [
     FormsModule,
-
     CommonModule,
     RouterLink,
-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     NgClass,
-  ],
+    NavbarComponent
+],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })

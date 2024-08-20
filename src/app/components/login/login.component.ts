@@ -13,6 +13,7 @@ import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './../../services/auth.service';
+import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
@@ -20,14 +21,12 @@ import { AuthService } from './../../services/auth.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-
     FormsModule,
     RouterLink,
-
     HttpClientModule,
-
     NgClass,
-  ],
+    NavbarComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -54,8 +53,10 @@ export class LoginComponent {
     this.authService.login(this.loginform.value).subscribe({
       next: (response) => {
          if (response) {
+          console.log(response)
           const token = response.token;
           this.authService.saveToken(token)
+
            this._Router.navigate(['/home']);
          } else {
            this.error = response.message;
