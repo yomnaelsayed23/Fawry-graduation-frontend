@@ -8,7 +8,7 @@ import { response } from 'express';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8090/api/v1/auth';
+  private apiUrl = 'http://localhost:8000/users/auth';
   private tokenKey = 'auth-token';
   userId!:string;
   role!:string;
