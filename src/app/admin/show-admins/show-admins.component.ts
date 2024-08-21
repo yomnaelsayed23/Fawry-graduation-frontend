@@ -1,8 +1,9 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-show-admins',
@@ -16,44 +17,50 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './show-admins.component.html',
   styleUrl: './show-admins.component.css'
 })
-export class ShowAdminsComponent {
+export class ShowAdminsComponent implements OnInit{
+
+  
 changeRole() {
 throw new Error('Method not implemented.');
 }
-  constructor(private router:Router){}
+  constructor(private router:Router,private adminService:AdminService){}
+  ngOnInit(): void {
+      this.getAllAdmins()
+  }
 
   selectedRole:  string = 'admin';
   selectedUser: any;
 
-  admins: any[] = [
-    {
-      fname: 'John',
-      lname: 'Doe',
-      gender: 'Male',
-      email: 'john@example.com',
-      phone_number: '123-456-7890'
-    },
-    {
-      fname: 'Jane',
-      lname: 'Smith',
-      gender: 'Female',
-      email: 'jane@example.com',
-      phone_number: '987-654-3210'
-    },
-    {
-      fname: 'Alice',
-      lname: 'Johnson',
-      gender: 'Female',
-      email: 'alice@example.com',
-      phone_number: '555-555-5555'
-    }
-    // Add more user objects as needed
-  ];
+  admins: any[] = [];
+
 
   movetoCreateAdmin(){
 this.router.navigate(['/create-admins'])
   }
+getAllAdmins() {
+  this.adminService.getAllUser().subscribe(
+    (result: any) => {
+      this.admins = result;
+      console.log(result);
+    },
+    (error) => {
+      console.error('Error fetching admin users', error);
+    }
+  );
+}
+deleteAdmin(adminId:string){
+  this.adminService.deleteAdmin(adminId).subscribe(
+    (result: any) => {
+      this.getAllAdmins();
+
+    },
+    (error) => {
+      console.error('Error fetching admin users', error);
+    }
+  );
+}
 
 
 
 }
+

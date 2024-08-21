@@ -4,13 +4,13 @@
   </div>
   <div class="col-md-9">
     <div class="register">
-      <form [formGroup]="productForm" class="w-50 m-5 p-5 my-5 rounded-4 border border-info rounded" (ngSubmit)="addProduct()">
+      <form [formGroup]="productForm" class="w-50 m-5 p-5 my-5 rounded-4 border border-info rounded" (ngSubmit)="addProducts()">
   <h2 class="text-center m-3" > Create New Product</h2>
 
         <div class="mb-3">
           <label for="image" class="form-label">Product Image</label>
-          <input type="text" class="form-control" id="image" formControlName="image">
-          <div *ngIf="productForm.get('image')?.invalid && productForm.get('image')?.touched" class="text-danger">
+          <input type="text" class="form-control" id="image" formControlName="image_url">
+          <div *ngIf="productForm.get('image_url')?.invalid && productForm.get('image_url')?.touched" class="text-danger">
             Image URL is required.
           </div>
         </div>
@@ -36,9 +36,9 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="stockQuantity" class="form-label">Stock Quantity</label>
-          <input type="number" class="form-control" id="stockQuantity" formControlName="stockQuantity">
-          <div *ngIf="productForm.get('stockQuantity')?.invalid && productForm.get('stockQuantity')?.touched" class="text-danger">
+          <label for="stock_quantity" class="form-label">Stock Quantity</label>
+          <input type="number" class="form-control" id="stock_quantity" formControlName="stock_quantity">
+          <div *ngIf="productForm.get('stock_quantity')?.invalid && productForm.get('stock_quantity')?.touched" class="text-danger">
             Stock Quantity must be at least 0.
           </div>
         </div>

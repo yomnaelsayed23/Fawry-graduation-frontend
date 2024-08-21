@@ -19,7 +19,7 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './product.component.scss'
 })
 export class ProductComponent {
-@Input() data!:Product
+@Input() data!:any
 @Output() item = new EventEmitter
 // @Input() product: any;
 addButton:boolean =false

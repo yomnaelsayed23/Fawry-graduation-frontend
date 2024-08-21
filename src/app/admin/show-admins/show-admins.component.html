@@ -22,15 +22,18 @@
     </thead>
     <tbody>
       <tr *ngFor="let admin of admins">
-        <td>{{ admin.fname }}</td>
-        <td>{{ admin.lname }}</td>
-        <td>{{ admin.business_name }}</td>
+        <td>{{ admin.userId }}</td>
+        <td>{{ admin.firstName }}</td>
+        <td>{{ admin.lastName }}</td>
         <td>{{ admin.email }}</td>
-        <td>{{ admin.phone_number }}</td>
+        <td>{{ admin.phone }}</td>
+        <td>{{ admin.gender }}</td>
+        <td>{{ admin.role }}</td>
+        <td>{{ admin.createdAt }}</td>
+        <td>{{ admin.updatedAt }}</td>
+        <td>{{ admin.deletedAt }}</td>
         <td>
-          <button class="btn btn-danger me-2">Delete</button>
-
-
+          <button class="btn btn-danger me-2" (click)="deleteAdmin(admin.userId)">Delete</button>
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCardModal">
               Change Role
 
