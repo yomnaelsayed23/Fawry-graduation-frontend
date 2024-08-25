@@ -23,7 +23,7 @@ export class ProductComponent {
 @Output() item = new EventEmitter
 // @Input() product: any;
 addButton:boolean =false
-amount:number = 0
+amount:number = 1
 
 // add(){
 // this.item.emit({item:this.data,quantity:this.amount})

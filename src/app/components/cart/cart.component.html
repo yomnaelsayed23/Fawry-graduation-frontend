@@ -5,7 +5,7 @@
   <h1 class="text-danger">Shopping Cart</h1>
   <div class="headCart">
     <p class="lead">You have <span class="text-danger fs-4 fw-bold">{{cartProduct.length}}</span> item in your cart</p>
-    <span class="text-danger card-header" (click)="clearProducts()" >Clear Shopping Cart</span>
+    <!-- <span class="text-danger card-header" (click)="clearProducts()" >Clear Shopping Cart</span> -->
   </div>
   <div class="table-cart container-fluid">
 
@@ -26,13 +26,13 @@
           <td>{{item.item.title}}</td>
           <td>{{item.item.price}} L.E</td>
           <td>
-            <div class="quantity">
-              <button class="btn btn-dark" (click)="addAmount(index)">+</button>
-              <input type="number" name="" class="form-control" (change)="detectChange()" [(ngModel)]="item.quantity"  min="1" id="">
-              <button class="btn btn-dark" (click)="minsAmount(index)" >-</button>
-            </div>
+            {{item.quantity}}
+            <!-- <div class="quantity"> -->
+              <!-- <button class="btn btn-dark" (click)="addAmount(index)">+</button> -->
+              <!-- <input type="text" name="" class="form-control" (change)="detectChange()" [(ngModel)]="item.quantity"  min="1" id=""> -->
+              <!-- <button class="btn btn-dark" (click)="minsAmount(index)" >-</button> -->
+            <!-- </div> -->
           </td>
-          <!-- <td></td> -->
           <td class="fw-bold"> {{item.item.price * item.quantity}} L.E</td>
           <td><button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button>  </td>
         </tr>
@@ -44,8 +44,10 @@
           <th></th>
           <th></th>
           <th>Total : {{total}}</th>
-          <th><button class="btn btn-success" (click)="addCartToBackend()"> Order Now </button></th>
+          <th><button class="btn btn-success" (click)="addCartToBackend()" [disabled]="cartProduct.length < 1"> Order Now </button></th>
         </tr>
+        <br>
+<button class="btn btn-dark" routerLink="/orders">Your Orders</button>
       </tfoot>
 
     </table>
@@ -53,6 +55,6 @@
 </div>
 </div>
 
-<div class="alert alert-success" role="alert" *ngIf="success"  ><strong>Will Done!</strong> Your Order Is Successfuly Send</div>
+<div class="alert alert-success" role="alert" *ngIf="success"  ><strong>Will Done!</strong> Your Order Is Successfully Send</div>
 
 <app-footer></app-footer>

@@ -1,45 +1,28 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
 
-
-
-  // SendDataToBackend(model:any){
-  //   return this.http.post('https://fakestoreapi.com/carts',model)
-  // }
-
-
-  constructor(private http:HttpClient) {
-
-    // const storedCount = localStorage.getItem('cartCount');
-    
-// this.cartCountSubject.next(storedCount !== null ? +storedCount : 0);
-
-
+  constructor(private http: HttpClient) {
+  }
+  getCartCount() {
+    return JSON.parse(localStorage.getItem('cart')!).length;
   }
 
-  // private cartCountSubject = new BehaviorSubject<number>(0);
-  // cartCount$ = this.cartCountSubject.asObservable();
-
-
-
-
-  // Method to add an item to the cart
-  // addToCart() {
-  //   const updatedCount = this.cartCountSubject.value + 1;
-  //   this.cartCountSubject.next(updatedCount);
-  //   localStorage.setItem('cartCount', updatedCount.toString());
-  // }
-
-  // Method to retrieve the current cart count (if needed directly)
-  // getCartCount(): number {
-  //   return this.cartCountSubject.value;
-  // }
+  removeProductFromCart(productId: number, cartId: string): Observable<void> {
+    const headers = new HttpHeaders({
+      cartId: cartId,
+    });
+    console.log('headers :>> ', headers);
+    return this.http.delete<void>(
+      `http://localhost:8900/shop/cart/${productId}`,
+      { headers }
+    );
+  }
 
 
 }
